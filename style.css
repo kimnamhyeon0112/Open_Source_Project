@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+*
+{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.box .Main_Logo
+{
+    color: #e8eade;
+    font-size: 5vh;
+    position: absolute;
+    top: 30vh;
+    left: 50%;
+    transform: translate(-50%);
+    font-weight: bold;
+}
+.box
+{
+    position: relative;
+}
+
+.box .Search_box
+{
+    width:1700px;
+    border: solid 30px #e8eade;
+    position:absolute;
+    top: 45vh;
+    font-size:2vh;color:white;
+    left:50%;
+    transform: translate(-50%);
+}
