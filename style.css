@@ -2,24 +2,30 @@
 *
 {
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
 }
 
 .box .Main_Logo
 {
     color: #e8eade;
     font-size: 5vh;
-    position: absolute;
-    top: 30vh;
+    position: relative;
     left: 50%;
     transform: translate(-50%);
     font-weight: bold;
+
 }
 .box
 {
-    position: relative;
+    position: fixed;
+    background-image: url(./World\ map-background.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }
 
-.box .Search_box
+/* .box .Search_box
 {
     width:1700px;
     border: solid 30px #e8eade;
@@ -28,4 +34,11 @@
     font-size:2vh;color:white;
     left:50%;
     transform: translate(-50%);
+} */
+
+.content1 {
+  position: relative; 
+  align-items: end;
+  height: 30%;  
+  display: flex;
 }
