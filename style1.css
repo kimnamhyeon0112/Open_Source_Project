@@ -33,11 +33,21 @@ svg path:hover
 .headline {
     grid-area: headline;
     border: dotted 3px red;
+   
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    grid-template-areas: ". title .";
 }
+.headline .TitleWrapper {
+    grid-area: title;
+    display: grid;
+}
+
 .main_map {
     grid-area: main_map;
     background-color: white;
-    border: dotted 3px red;
+    border: dotted 3px red;  
+    
 }
 .sidebar {
     grid-area: sidebar;
@@ -46,4 +56,27 @@ svg path:hover
 .footer {
     grid-area: footer;
     border: dotted 3px red;
+
+    display: grid;
+    grid-template-columns: 20% 1fr 5%;
+    grid-template-areas: "funcs none reset";
+}
+.footer .functions  {
+    grid-area: funcs;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;;
+   
+}
+.functions>* {
+    border-radius: 10px;
+    background-color: gainsboro;
+}
+.footer .resetWrapper {
+    grid-area: reset;
+    display: grid;
+}
+.resetWrapper .reset {
+    border-radius: 10px;
+    background-color: gainsboro;
 }
