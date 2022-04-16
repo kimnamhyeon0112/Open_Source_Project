@@ -41,7 +41,12 @@ svg path:hover
 .headline .TitleWrapper {
     grid-area: title;
     display: grid;
+    justify-items: center;
+    align-items: center;
+    font-size: 5vh;
+    font-weight: bold;
 }
+
 
 .main_map {
     grid-area: main_map;
@@ -52,6 +57,8 @@ svg path:hover
 .sidebar {
     grid-area: sidebar;
     border: dotted 3px red;
+    display: grid;
+    grid-template-rows: 10% 40% 25% 15% 10% ;
 }
 .footer {
     grid-area: footer;
