@@ -4,12 +4,6 @@
     padding: 0;
 }
 
-body                
-/* 지도에서 바다 부분에 해당 */
-{
-    background-color: white;
-}
-
 svg path
 /* 땅 부분 설정 */
 {
@@ -22,4 +16,34 @@ svg path:hover
 {
     fill: #006284;
     transition:0.6a;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 10% 1fr 5%;
+    height: 100vh;
+    grid-template-areas: 
+        "headline sidebar"
+        "main_map sidebar"
+        "footer sidebar"
+    ;
+}
+
+.headline {
+    grid-area: headline;
+    border: dotted 3px red;
+}
+.main_map {
+    grid-area: main_map;
+    background-color: white;
+    border: dotted 3px red;
+}
+.sidebar {
+    grid-area: sidebar;
+    border: dotted 3px red;
+}
+.footer {
+    grid-area: footer;
+    border: dotted 3px red;
 }
