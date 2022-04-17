@@ -104,10 +104,9 @@ button:active {
     background-color: rgb(153, 152, 152);
  }
  
- .main_map .China, .Japan, #IN,#KR {
-     fill: #FF9945;
-
- }
-
+.main_map .China, .Japan, #IN,#KR [button="world_importer.html"] {
+    fill: #FF9945;
+}
+ 
 
  
