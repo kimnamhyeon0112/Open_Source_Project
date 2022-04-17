@@ -110,11 +110,11 @@ button:active {
     background-color: rgb(153, 152, 152);
  }
  
- .main_map .China, .Japan, #KR, #IN {
-     fill: rgba(238, 197, 63, 0.548);
-     stroke: rgba(110, 167, 221, 0.808); 
-     stroke-width: 1; 
- }
+ .main_map .China, .Japan, #KR, #IN,.United.States,#ZA, .Russian, .Indonesia,#VN{
+    fill: rgba(238, 197, 63, 0.548);
+    stroke: rgba(110, 167, 221, 0.808); 
+    stroke-width: 1; 
+}
  
 
  

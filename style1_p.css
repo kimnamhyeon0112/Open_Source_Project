@@ -89,7 +89,6 @@ svg path
     "export product stock"
     "import consume reserve"
     ;
-   
 }
 .functions>* {
     border-radius: 10px;
@@ -110,11 +109,11 @@ button:active {
     background-color: rgb(153, 152, 152);
  }
  
- .main_map .China, .Japan, #KR, #IN {
-     fill: rgba(238, 197, 63, 0.548);
-     stroke: rgba(110, 167, 221, 0.808); 
-     stroke-width: 1; 
- }
+ .main_map .China,#IN,.Indonesia,.Australia,.Russia,#KZ,#ZA,#PL,.United.States{
+    fill: rgba(238, 197, 63, 0.548);
+    stroke: rgba(110, 167, 221, 0.808); 
+    stroke-width: 1; 
+}
  
 
  
