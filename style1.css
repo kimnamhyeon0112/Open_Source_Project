@@ -12,11 +12,11 @@ svg path
     stroke-width: .5;          /* 외곽선 굵기 */
 }
 
-/* svg path:hover
-{
-    fill: #006284;
-    transition:0.6a;
-} */
+.main_map svg path:hover{
+    cursor: pointer;
+    transition: 0.6s;
+    fill:#5ca4ea;
+}
 
 .container {
     display: grid;
@@ -110,11 +110,11 @@ button:active {
     background-color: rgb(153, 152, 152);
  }
  
- .main_map .China, .Japan, #KR, #IN {
+ /* .main_map .China, .Japan, #KR, #IN {
      fill: rgba(238, 197, 63, 0.548);
      stroke: rgba(110, 167, 221, 0.808); 
      stroke-width: 1; 
  }
- 
+  */
 
  
