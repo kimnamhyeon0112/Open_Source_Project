@@ -39,10 +39,6 @@
     transform: translate(-50%);
      left:50%;
 }
-.box .Search_boxWrapper{
-   width: inherit;
-   border-radius: 15px;
- }
 .box .Search_box{
     
     /* border: solid 2px  rgb(209, 207, 207);border-radius: 15px; */
@@ -51,7 +47,7 @@
     width: inherit;
     box-sizing: border-box;
     padding-inline-start: 40px;
-    border-radius: inherit;
+    border-radius: 15px;
     
 }
 input::placeholder{
@@ -75,13 +71,12 @@ input::placeholder{
 }
 .item{
     outline:none;
-    margin-top: 1px;
     position: relative;
     background: white;
     padding: 0 10px;
 }
 .item:hover {
-	color: #9baec8;
+	background: #c0bebe
 }
 .invisible {
 	display: none;

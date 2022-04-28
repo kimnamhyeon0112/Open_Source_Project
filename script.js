@@ -1,6 +1,6 @@
 const inputBox = document.querySelector("input");
 const recommendBox = document.querySelector("#recommend");
-const texts = document.querySelectorAll(".text");
+const serchbox = document.getElementsByClassName("Search_box");
 
 /*addEventListener라는 함수는 인자를 "keyup"와 e를 받는다.
 	여기서 e라는 값은 조건 형태로 값을 가지게 된다. //e는 이벤트가 발생한 값을 저장
@@ -11,7 +11,9 @@ const texts = document.querySelectorAll(".text");
 inputBox.addEventListener("keyup",e=>{
 	if (e.target.value.length > 0) {
 		recommendBox.classList.remove('invisible');
+		for(i=0;i<serchbox.length;i++)serchbox[i].style.borderRadius = "0px";
 	} else {
 		recommendBox.classList.add('invisible');
+		for(i=0;i<serchbox.length;i++)serchbox[i].style.borderRadius = "15px";
 	}
 })
