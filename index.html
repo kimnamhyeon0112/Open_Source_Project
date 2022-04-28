@@ -3,25 +3,30 @@
 
 <head>
 <meta charset="UTF-8">
-<title>World Commodities Map</title>
+<title>World Commodities Location Map</title>
 <link rel="stylesheet" type="text/css" href="./style.css">
+<script type="text/javascript" defer src="script.js"></script>
 </head>
 
 <body>
 <div class="box">
     <div class="content1"> 
-            <div class="Main_Logo">World Commodities Map</div> 
+            <header class="Main_Logo">World Commodities Location Map</header> 
     </div>
     <div class="content2">
-        <div class="RealSerchBox">
+        <main class="RealSerchBox">
             <div class="Search_boxWrapper">
                  <span class="icon_container"><img id="serch_icon"src="./serch_icon.jpg"></span>
-                 <input class="Search_box" type="text" placeholder="원자재명을 입력하세요">
-                 
+                 <input class="Search_box" type="text" placeholder="원자재명을 입력하세요"> <!--Search bar -->                                      
+                 <div id="recommend" class="invisible">
+                     <div class="item">Wheat consume</div>
+                     <div class="item">Coal import</div>
+                     <div class="item">Copper import</div>
+                 </div>                  
                 </div>
-            </div> 
-        </div>
+        </main> 
     </div>
+</div>
         <div class="Menu_Tab"></div>      
 </div>     
 </body>
