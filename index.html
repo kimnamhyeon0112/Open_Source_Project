@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>World Commodities Location Map</title>
 <link rel="stylesheet" type="text/css" href="./style.css">
-<script type="text/javascript" src="./script.js"></script>
+
 </head>
 
 <body>
@@ -17,9 +17,9 @@
         <main class="RealSerchBox">
             <div class="SearchBoxWrapper">  
                 <span class="icon_container"><img id="serch_icon"src="./serch_icon.jpg"></span>
-                <input id="Search_box" type="text" placeholder="Commodity Search" onkeyup="search()"> 
+                <input id="Search_box" type="text" placeholder="Commodity Search" onkeyup="search_Recommends()"> 
             </div>
-            <ul id="command_list">
+            <ul id="command_list" class="invisible">
                 <li class="command">CrudeOil Import</li>
                 <li class="command">CrudeOil Export</li>
                 <li class="command">CrudeOil Stock</li>
@@ -149,6 +149,7 @@
     </div>
 </div>
         <div class="Menu_Tab"></div>      
-</div>     
+</div>    
+<script type="text/javascript" src="./script.js"></script>
 </body>
 </html> 
