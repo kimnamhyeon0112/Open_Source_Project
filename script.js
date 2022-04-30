@@ -1,25 +1,21 @@
-const inputBox = document.querySelector("#Search_box");
-const ta = document.querySelector("#command_list");
-
-inputBox.addEventListener("keyup", (e)=>{
-	if(e.target.value.length >0){
-		ta.classList.remove('invisible');
-		// searchbox.style.setProperty('border-radius', '0px');
-	}
-	else{
-		ta.classList.add('invisible');
-		// searchbox.style.setProperty('border-radius', '15px');
-	}
-})
-
-
 const search_Recommends= ()=>{
-	const searchbox = document.getElementById("Search_box");
+	let searchbox = document.getElementById("Search_box");
 	let command_list = document.getElementById("command_list");
-	let command = document.querySelectorAll(".command");
-	let commands_tags = command_list.getElementsByTagName("li");
-
-	for(var i=0; i<commands_tags.length;i++){
+	let command = document.getElementsByClassName("command");
+	
+	//검색창에 문자가 입력되면, 추천 검색어를 보이게 수정 && 검색창 모서리를 뾰족하게 만듦
+	searchbox.addEventListener("keyup", (e)=>{
+		if(e.target.value.length >0){
+			command_list.style.display="block";
+			searchbox.style.borderRadius="0px";
+		}
+		else{
+			command_list.style.display="none";
+			searchbox.style.borderRadius="15px";
+		}
+	})
+	//사용자가 입력한 문자에 맞게 추천 검색어 보여주는 기능. 영문 대소문자 가리지 않고 찾아준다
+	for(var i=0; i<(command_list.getElementsByTagName("li")).length;i++){
 		let match = command[i];
 
 		if(match){
@@ -32,4 +28,5 @@ const search_Recommends= ()=>{
 			}
 		}
 	}	
+	
 }

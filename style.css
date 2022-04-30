@@ -75,7 +75,8 @@ input::placeholder{
     background: white;
     height: 70%;
     overflow-y: scroll;
-} 
-.invisible{
     display: none;
-}
+} 
+/* .invisible{
+    display: none;
+} */
