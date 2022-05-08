@@ -28,3 +28,13 @@ const search_Recommends= ()=>{
 		}
 	}	
 }
+
+//검색창에서 Enter 입력하면 해당 검색값이 ul에 있으면 WorldMap.html로 이동시키는 것
+var input = document.getElementById("Search_box");
+input.addEventListener("keypress", function(event) {
+	// If the user presses the "Enter" key on the keyboard
+	if (event.key === "Enter") {
+		// Enter 눌리면, 해당 html창으로 이동
+		window.location.href='WorldMap.html';
+	}
+});
