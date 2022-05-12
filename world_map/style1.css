@@ -67,6 +67,7 @@ svg path
     display: grid;
     align-items: center;
     border-bottom: solid 1px black;
+    font-weight: bold;
 }
 
 

@@ -44,14 +44,13 @@ searchbox.addEventListener("keypress", function(event) {
 				let textvalue=match.textContent || match.innerHTML
 				
 				if(textvalue.toUpperCase()==searchbox.value.toUpperCase()){
-					// document.cookie = String(searchbox.value)+"="+textvalue;
+					localStorage.setItem("inputValue", textvalue);
 					window.location.href="./world_map/WorldMap.html";
 					check=false;
 					break;
 				}
 			}	
 		}
-		console.log(check);
 		if(check){
 			alert("Not valid\nSee Recommend Commands");
 		}
