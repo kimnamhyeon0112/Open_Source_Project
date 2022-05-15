@@ -61,13 +61,26 @@ MIT License
          ● 초기화 스타일은 서비스에 맞게 정의하고 만약 normalize.css 또는 Bootstrap 등의 프레임워크를 사용한다면 초기화를 생략할것
        2-10 Vendor Prefix
          ● 벤더 프리픽스 프로퍼티는 일반 프로퍼티보다 먼저 선언
+     3. Javascript(Google 권장방식)
+         ● 변수와 함수명은 camelCase (단, 상수는 UPPER_CASE)
+         ● 상수(const)는 UPPER_CASE로 명확히 표현
+         ● 변수 선언시 var대신 let이나 const를 사용
+         ● 한 번에 하나의 변수만 선언
+         ● 파일명은 lower_case 혹은 lower-case로 작성 (혼재해서 사용금지)
+         ● 들여쓰기는 탭이나 4칸공백보다는 2칸 공백을 권유
+         ● 문장의 끝에 세미콜론 기재를 권유 (자바스크립트는 세미콜론이 강요되지 않음)
+         ● Arrow Function으로 표현할 수 있는 부분은 가급적 Arrow Function으로 표현할 것
+         ● 문자열 연결시 + 보다는 탬플릿 문자열로 표현 (따옴표 모양 유심히 볼 것)
+         ● 문자열은 큰따옴표(“) 보다는 작은따옴표(‘)를 사용, 문자열에 작은따옴표 포함시 탬플릿 문자열 사용 (`)
 
 출처: https://uxicode.tistory.com/entry/HTML-코딩-컨벤션-이런-저런-규약-참조 [세줄코딩]
 
 출처: https://uxicode.tistory.com/entry/CSS-코딩-컨벤션-이것-저것-참조?category=528975 [세줄코딩]
+
+출처: https://itholic.github.io/js-style-guide/
 # 연락처
 김남현 knh306@naver.com
 
-신용인 inx1877@naver.com
+신용인 brin7584@gmail.com
 
 유환태 best00517@naver.com
