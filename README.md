@@ -15,69 +15,6 @@
 구현중, 차후 공개
 # 라이선스
 MIT License
-# 코딩 컨벤션
-     1. HTML
-       1-1 Syntax
-         ● 들여쓰기는 2개의 공백 문자(소프트탭)을 사용. 다른 규칙으로 통일하여 작성해도 된다.
-         ● 모든 엘리먼트 명과 애트리뷰트 명은 케밥 표기법(kebab-case)으로 작성.
-         ● 모든 애트리뷰트 값은 큰 따옴표(")로 감싸기.
-         ● 주석 <!-- ---> 처럼 기본 표기
-       1-2 Metadata
-         ● Charset: UTF-8
-         ● X-UA-Compatible: PC용 웹사이트는 최신 버전의 IE로 렌더링하기 위해 문서모드를 Edge로 선언
-         ● Title
-         ● Meta
-         ● Style: HTML5 에서 CSS 와 JS 파일을 불러올 때 <head></head>태그 내에 로드 순서 지키기(순서는 CSS, Javascript순)
-         ● JavaScript
-     2. CSS
-       2-1 Syntax
-         ● Lint 사용 권장
-         ● css class 이름은 케밥 표기법 ( kebab-case )으로 작성, 알파벳(대소문자)로 시작하되 숫자/특수문자로 시작하면 안됨
-         ● css id 는 캐멀 케이스 ( Camel case )방식으로 이름을 명기
-         ● 들여쓰기는 2개의 공백 문자(소프트탭)을 사용 다른 규칙으로 통일하여 작성
-         ● 프로퍼티는 되도록 한 줄에 하나씩 작성 ( css를 minify 한다는 전제하에 )
-         ● 프로퍼티는 영문 소문자로 작성
-         ● 일반적으로 작은 따옴표(')를 사용하지만 @charset 선언과 타입 선택자는 큰 따옴표(")를 사용. 가능하다면 생략할 것
-         ● 사용되지 않는 CSS 선택자는 제거
-       2-2 Charset
-         ● 문서의 언어셋은 UTF-8으로 최상위에 선언
-         ● 언어셋이 정해진 번들링 파일이라면 선언하지 말것
-       2-3 Selectors
-         ● 태그이름과 선택자는 가급적 중첩하지 말것
-         ● Indentation Depth 는 4 Depth 까지, 가급적 1 Depth 만을 사용하는 것을 권장
-       2-4 z-index
-         ● z-index 스택을 0부터 규칙 없이 쌓는다면 순서가 꼬이므로 엘리먼트의 특성에 맞게 계층을 분리하여 체계적으로 관리할 것
-         ● CSS 전처리기의 믹스인을 활용한다던지 상단에 변수로 한군데 모아둘 것
-       2-5 Import
-         ● CSS 의 기본 문법인 @import는 성능 문제를 가지고 있어 되도록 사용하지 말것
-       2-6 Media Query
-         ● 미디어 쿼리는 컴포넌트 단위로 분류하여 관련 규칙 바로 뒤에 작성하거나 문서의 마지막에 모아 작성할것
-       2-7. Nesting(중첩)
-         ● 너무 많은 선택자의 중첩은 피해야 하므로, CSS 전처리기가 지원하는 Nesting 문법은 주의해서 사용
-         ● 웬만해서 4depth 를 넘어가지 않게 하는 게 명시적으로 좋음
-       2-8 Extend ( scss )
-         ● CSS 전처리기 ( scss )가 지원하는 Extend 문법은 사용하지 말고, Mixin 으로 대체할것
-       2-9 Reset
-         ● 초기화 스타일은 서비스에 맞게 정의하고 만약 normalize.css 또는 Bootstrap 등의 프레임워크를 사용한다면 초기화를 생략할것
-       2-10 Vendor Prefix
-         ● 벤더 프리픽스 프로퍼티는 일반 프로퍼티보다 먼저 선언
-     3. Javascript(Google 권장방식)
-         ● 변수와 함수명은 camelCase (단, 상수는 UPPER_CASE)
-         ● 상수(const)는 UPPER_CASE로 명확히 표현
-         ● 변수 선언시 var대신 let이나 const를 사용
-         ● 한 번에 하나의 변수만 선언
-         ● 파일명은 lower_case 혹은 lower-case로 작성 (혼재해서 사용금지)
-         ● 들여쓰기는 탭이나 4칸공백보다는 2칸 공백을 권유
-         ● 문장의 끝에 세미콜론 기재를 권유 (자바스크립트는 세미콜론이 강요되지 않음)
-         ● Arrow Function으로 표현할 수 있는 부분은 가급적 Arrow Function으로 표현할 것
-         ● 문자열 연결시 + 보다는 탬플릿 문자열로 표현 (따옴표 모양 유심히 볼 것)
-         ● 문자열은 큰따옴표(“) 보다는 작은따옴표(‘)를 사용, 문자열에 작은따옴표 포함시 탬플릿 문자열 사용 (`)
-
-출처: https://uxicode.tistory.com/entry/HTML-코딩-컨벤션-이런-저런-규약-참조 [세줄코딩]
-
-출처: https://uxicode.tistory.com/entry/CSS-코딩-컨벤션-이것-저것-참조?category=528975 [세줄코딩]
-
-출처: https://itholic.github.io/js-style-guide/
 # 연락처
 김남현 knh306@naver.com
 
