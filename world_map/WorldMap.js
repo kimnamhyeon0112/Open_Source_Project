@@ -7,9 +7,9 @@ if(localStorage.getItem('inputValue')){
     h1TagContent.textContent = textvalue
     CommodityName.textContent = textvalue.substring(0,(textvalue.indexOf(' ')));
 }
-
-var url = 'https://raw.githubusercontent.com/kimnamhyeon0112/Open_Source_Project/Feature_PieData/DB/'+'inputValue'+'.csv';
-dfd.readCSV(url)
+const textvalue = localStorage.getItem('inputValue')
+var remote_url = 'https://raw.githubusercontent.com/kimnamhyeon0112/Open_Source_Project/Feature_PieData/DB/'+ textvalue +'.csv';
+dfd.readCSV(remote_url)
 .then(function(data){
     data.plot ("plot_div").pie({ config: { values: "Quantity", labels: "Country" } });
  });
