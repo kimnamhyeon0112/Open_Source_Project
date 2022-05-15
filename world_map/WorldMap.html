@@ -3,7 +3,8 @@
     <head>
         <title>World Commodites Map</title>
         <link rel="stylesheet" href="style1.css" type="text/css"/>
-       
+        <script src="https://cdn.jsdelivr.net/npm/danfojs@1.1.0/lib/bundle.min.js"></script>
+
     </head>
 <body> 
 <div class="container">
@@ -993,7 +994,9 @@ THE SOFTWARE.
     </div>
     <div class="sidebar">
         <div id="commodity_name"><h2>a</h2></div>
-        <div class="data"><h2>Chart data</h2></div> <!--차트는 js로 만들어야 함-->
+        <div class="data"><h2>Chart data</h2>
+            <div id="plot_div" style = "height:300px"> </div>
+        </div> <!--차트는 js로 만들어야 함-->
         <div class="market_price"><h2>Price</h2></div>
         <div class="commodity_utilize"><h2>주 사용처</h2></div>
         <div class="link"><h2>관련 site link</h2></div>
