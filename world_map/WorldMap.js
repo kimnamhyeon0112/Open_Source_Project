@@ -7,7 +7,9 @@ if(localStorage.getItem('inputValue')){
     h1TagContent.textContent = textvalue
     CommodityName.textContent = textvalue.substring(0,(textvalue.indexOf(' ')));
 }
-dfd.readCSV('https://raw.githubusercontent.com/huntedu/web/main/Oil_Reserves.csv')
+
+var url = 'https://raw.githubusercontent.com/kimnamhyeon0112/Open_Source_Project/Feature_PieData/DB/'+'inputValue'+'.csv';
+dfd.readCSV(url)
 .then(function(data){
     data.plot ("plot_div").pie({ config: { values: "Quantity", labels: "Country" } });
  });
