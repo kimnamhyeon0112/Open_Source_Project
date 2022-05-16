@@ -16,6 +16,7 @@ svg path
     cursor: pointer;
     transition: 0.6s;
     fill:#5ca4ea;
+    
 }
 
 .container {
@@ -117,5 +118,27 @@ button:active {
      stroke-width: 1; 
  }
   */
-
- 
+#info-tooltip {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    line-height: 1.42857143;
+    font-family: Source Sans Pro,Arial,sans-serif;
+    box-sizing: border-box;
+    pointer-events: none;
+    position: fixed;
+    background-color: #fff;
+    padding: 1px 5px;
+    z-index: 5;
+    margin: 0 auto;
+    color: #21669e;
+    font-size: 1.1em;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 1px solid #dedede;
+    box-shadow: 4px 4px 6px 0 #bdb9bd;
+    user-select: none;
+    left: 286.484px;
+    top: 285px;
+    background-image: none;
+    display: none;
+}
