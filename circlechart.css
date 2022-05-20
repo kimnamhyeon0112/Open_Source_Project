@@ -14,8 +14,8 @@
 
 .chart {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   transition: 0.3s;
 }
