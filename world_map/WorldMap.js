@@ -8,8 +8,34 @@ if(localStorage.getItem('inputValue')){
     CommodityName.textContent = textvalue.substring(0,(textvalue.indexOf(' ')));
 }
 
+function getToday(){
+  let date = new Date();
+  let year = date.getFullYear();
+  let month = ("0" + (1 + date.getMonth())).slice(-2);
+  let day = ("0" + date.getDate()).slice(-2);
 
-API_KEY = 'NULL';
+  return year + "-" + month + "-" + day;
+}
+
+function getStartdate(){
+  let end = new Date()
+  let start = new Date(end.setMonth(end.getMonth()-6));
+  //end 가 실행된 날짜에서 6달 전. 그러면 차트에서 6달 만큼 data를 볼 수 있다.
+
+  let year = start.getFullYear();
+  let month = ("0"+(1+start.getMonth())).slice(-2);
+  let day = ("0"+start.getDate()).slice(-2);
+
+  return `${year}-${month}-${day}`;
+}
+
+const API_KEY = 'NULL';
+
+let database_code = `OPEC`;
+let dataset_code = `ORB`;
+let end_date = getToday();
+let start_date = getStartdate();
+
 let ChartXvalues = [];
 let ChartYvalues = [];
 
@@ -17,7 +43,7 @@ let ChartXvaluesFunction=[];
 let ChartYvaluesFunction=[];
 
 let arr = [1, 2, 3, 4, ,5];
-fetch(`https://data.nasdaq.com/api/v3/datasets/OPEC/ORB?start_date=2022-01-01&end_date=2022-05-18&api_key=${API_KEY}`)
+fetch(`https://data.nasdaq.com/api/v3/datasets/${database_code}/${dataset_code}?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`)
 .then((response) => response.json())
 .then(
     function(data){
