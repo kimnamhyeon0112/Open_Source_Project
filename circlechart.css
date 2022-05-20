@@ -1,6 +1,9 @@
 .wrap {
-  position: relative;
-  padding: 2%;
+  width: 198px;
+  height: 198px;
+  float: right;
+  border: 198px;
+  margin: 5px 7px 3px 8px;
 }
 
 .container {
