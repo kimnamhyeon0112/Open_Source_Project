@@ -7,6 +7,34 @@ if(localStorage.getItem('inputValue')){
     h1TagContent.textContent = textvalue
     CommodityName.textContent = textvalue.substring(0,(textvalue.indexOf(' ')));
 }
+// let API_Code = {
+//   CrudeOil : [`OPEC/ORB`,`EUREX/FCPEM2024.json`],
+//   NaturalGas : ["BSE/BOM519003.json"],
+//   Coal : ["HKEX/03948.json", "HKEX/01898.json", "HKEX/00835.json", "BSE/BOM533278.json"],
+
+//   Aluminium : "SHFE/ALQ2022.json",
+//   Copper : ["HKEX/00358.json", "SHFE/CUQ2022.json"] ,
+//   Zinc : "SHFE/ZNQ2022.json",
+//   Nickel : "SHFE/NIN2022.json",
+//   Lead : "SHFE/PBQ2022.json",
+//   Tin : "",
+//   IronOre : "HKEX/01053.json",
+//   Gold :"SHFE/AUX2021" ,
+//   Silver : ["SHFE/AGQ2022",	"LBMA/SILVER"],
+//   Cobalt : "ODA/PCOBA_USD.json",
+//   Lithium : "",
+
+//   BaseMetals : "ODA/PMETA_INDEX.json",
+
+//   Corn : "",
+//   Wheat : "",
+//   Rice : "",
+//   Oats : "",
+//   SoybeanOil : "",
+//   Soybean : "",
+//   Sugar : "",
+//   Coffee : ""
+// }
 
 function getToday(){
   let date = new Date();
@@ -31,57 +59,58 @@ function getStartdate(){
 
 const API_KEY = 'NULL';
 
-let database_code = `OPEC`;
-let dataset_code = `ORB`;
+// let database_code = `OPEC/ORB`;
+
 let end_date = getToday();
 let start_date = getStartdate();
 
 let ChartXvalues = [];
 let ChartYvalues = [];
 
-let ChartXvaluesFunction=[];
-let ChartYvaluesFunction=[];
+let series = `RNGC4`;
 
-let arr = [1, 2, 3, 4, ,5];
-fetch(`https://data.nasdaq.com/api/v3/datasets/${database_code}/${dataset_code}?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`)
+// fetch(`https://data.nasdaq.com/api/v3/datasets/${database_code}?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`)
+
+fetch(`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=${series}`)
 .then((response) => response.json())
 .then(
     function(data){
-        // console.log(data.dataset);
+        // console.log(data);
 
-        for (var key in (data.dataset)[`data`]){
+     
+        for (var key in (data.response)[`data`]){
           
-            ChartYvaluesFunction.push((data.dataset.data)[key][`0`]);
-            ChartXvaluesFunction.push((data.dataset.data)[key][`1`]);
+            ChartXvalues.unshift((data.response.data)[key][`period`]);
+            ChartYvalues.unshift((data.response.data)[key][`value`]);
         }
-
-        ChartXvalues = ChartXvaluesFunction.reverse();
-        ChartYvalues = ChartYvaluesFunction.reverse();
-
-        new Chart(document.getElementById("Price_LineChart"), {
-          type: 'line',
-          data: {
-            labels: ChartYvalues,
-            datasets: [{ 
-                data:  ChartXvalues,
-                label: "OPEC",
-                borderColor: "#3e95cd",
-                fill: false
-              },
-            ]
-          },
-          options: {
-            title: {
-              display: true,
-              text: 'Crude Oil Future Price'
-            }
-          }
-        });
-
-
-    }
+        // console.log(ChartYvalues);
+        makeChart(ChartXvalues, ChartYvalues,series);
+      }
 )
+function getRandomColor() {
+	return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
 
-
+function makeChart(ChartXvalues, ChartYvalues, _label){
+    new Chart(document.getElementById("Price_LineChart"), {
+      type: 'line',
+      data: {
+        labels: ChartXvalues,
+        datasets: [{ 
+            data:  ChartYvalues,
+            label: _label,
+            borderColor: "#3e95cd",
+            fill: false
+          },
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'NaturalGas'
+        }
+      }
+    });
+}
 
 
