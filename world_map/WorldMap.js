@@ -11,28 +11,38 @@
 let chartsheet = {
   type: 'line',
   options: {
-    // responsive : false,
-    borderWidth : 1,
-    pointBorderWidth : 1,
+    // maintainAspectRatio : false,
+    responsive : true,
+    aspectRatio : 1.5,  //차트의 (가로길이/세로길이) 비율
     title: {
       display: true,
       text: CommodityName.textContent
     },
     elements: {
       point:{
-          radius: 0.4
+          radius: 0.4     //선에 있는 점의 크기 조절
       },
       line :{
-        borderWidth : 1
+        borderWidth :1  //선 두께
       }
     },
     legend :{
-      position : `bottom`,
-      align : `start`,
+      position : `bottom`,    //선의 이름박스 아래로
+      align : `center`,    
       labels :{
-        boxWidth : 20,
+        boxWidth : 20,      //이름박스 크기 조절
         fontFamily : "'Open Sans', sans-serif",
       }
+    },
+    scales:{
+      xAxes:[{
+        ticks : {
+          maxTicksLimit : 8,
+          maxRotation :  0 ,
+          autoSkipPadding: 8,
+          
+        } 
+      }]
     }
   }
 }
@@ -52,7 +62,7 @@ function addData( ChartYvalues, _label){
   PriceChart.update();	//차트 업데이트
 }
 
-const API_KEY = 'aP96nssYL9b4QeoE92y4gnbKfbFPq4s6MhruQUtF';
+const API_KEY = 'NULL';
 let series = "NULL";
 let API_URL="NULL";
 
