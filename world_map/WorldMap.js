@@ -11,9 +11,28 @@
 let chartsheet = {
   type: 'line',
   options: {
+    // responsive : false,
+    borderWidth : 1,
+    pointBorderWidth : 1,
     title: {
       display: true,
       text: CommodityName.textContent
+    },
+    elements: {
+      point:{
+          radius: 0.4
+      },
+      line :{
+        borderWidth : 1
+      }
+    },
+    legend :{
+      position : `bottom`,
+      align : `start`,
+      labels :{
+        boxWidth : 20,
+        fontFamily : "'Open Sans', sans-serif",
+      }
     }
   }
 }
@@ -33,12 +52,13 @@ function addData( ChartYvalues, _label){
   PriceChart.update();	//차트 업데이트
 }
 
-const API_KEY = 'NULL';
+const API_KEY = 'aP96nssYL9b4QeoE92y4gnbKfbFPq4s6MhruQUtF';
 let series = "NULL";
+let API_URL="NULL";
 
-  let API_Code = {
+let API_Code = {
   CrudeOil : [`OPEC/ORB`,`EUREX/FCPEM2024.json`],
-  NaturalGas : {url : `https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=asc&data[]=value&facets[series][]=${series}`,series : [`RNGWHHD`,"RNGC1","RNGC2", "RNGC3", "RNGC4"] },
+  NaturalGas : {url : `https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=asc&data[]=value&facets[series][]=`, kind : [`RNGWHHD`,"RNGC1","RNGC2", "RNGC3", "RNGC4"] },
   Coal : ["HKEX/03948.json", "HKEX/01898.json", "HKEX/00835.json", "BSE/BOM533278.json"],
 
   Aluminium : "SHFE/ALQ2022.json",
@@ -94,34 +114,35 @@ let start_date = getStartdate();
 
 let ChartXvalues = [];
 let ChartYvalues = [];
-series = API_Code[CommodityName.textContent][`series`];
-console.log(series);
-
-let A=[];
-let B=[];
+series = API_Code[CommodityName.textContent][`kind`];
+API_URL = API_Code[CommodityName.textContent][`url`];
 
 // fetch(`https://data.nasdaq.com/api/v3/datasets/${database_code}?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`)
+for(let dataname in series){
 
-fetch(`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=asc&data[]=value&facets[series][]=RNGC3`)
-.then((response) => response.json())
-.then(
-    function(data){
-        console.log(data);
+  fetch(API_URL+series[dataname])
+  .then((response) => response.json())
+  .then(
+      function(data){
+          //배열 재사용 전에 비우기
+          if(ChartXvalues.length !=0)ChartXvalues = [];
+          if(ChartYvalues.length !=0)ChartYvalues=[];
 
-     
-        for (var key in (data.response)[`data`]){
+          //해당 배열에 기간과 원자재 값 넣기
+          for (let key in (data.response)[`data`]){
+            
+              ChartXvalues.push((data.response.data)[key][`period`]);
+              ChartYvalues.push((data.response.data)[key][`value`]);
+          }
           
-            ChartXvalues.push((data.response.data)[key][`period`]);
-            ChartYvalues.push((data.response.data)[key][`value`]);
-            A.push(((data.response.data)[key][`period`]));
-            B.push((data.response.data)[key][`value`]+1);
+          //적당히 차트에 넣고 차트 갱신
+          PriceChart.data.labels = ChartXvalues;
+          PriceChart.update();
+          addData(ChartYvalues,series[dataname]);
         }
-        PriceChart.data.labels = ChartXvalues;
-        PriceChart.update();
-        addData(ChartYvalues,series);
-        addData(B, "TEST");
-      }
-)
+  )
+}
+
 function getRandomColor() {
 	return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }

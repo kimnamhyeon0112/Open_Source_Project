@@ -61,17 +61,30 @@ svg path
     border-left: solid 3px black;
     display: grid;
     grid-template-rows: 10% 45% 45% ;
+    grid-template-areas:
+    "commodity_name"
+    "data"
+    "market_chart";
     padding-left: 5px;
 }
 #commodity_name {
+    grid-area: commodity_name;
     display: grid;
     align-items: center;
     border-bottom: solid 1px black;
     font-weight: bold;
 }
-#Price_LineChart{
-    width: 100%;
+.data{
+    grid-area: data;
 }
+.market_price{
+   grid-area: market_chart;
+}
+/* #Price_LineChart{
+    position: relative;
+    height: 500px;
+    width: 500px;
+} */
 
 .footer {
     grid-area: footer;
