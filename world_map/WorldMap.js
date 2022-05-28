@@ -70,7 +70,7 @@ function addData( ChartYvalues, _label){
   PriceChart.update();	//차트 업데이트
 }
 
-const API_KEY = 'NULL';
+let API_KEY =  `NULL`;
 let API_URL="NULL";
 let chart_info = "NULL";
 let data_source = "NULL";
@@ -80,22 +80,31 @@ let start_date = getStartdate();
 
 
 let API_Code = {
-  CrudeOil : {url : [`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC1`,`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC2`,`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC3`,`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC4`], label : ["RCLC1","RCLC2", "RCLC3", "RCLC4" ], info :'CrudeOil Future Price', data_source : "NYMEX Future Price use eia API"},
+  CrudeOil : {url : [`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC1`,`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC2`,`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC3`,`https://api.eia.gov/v2/petroleum/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RCLC4`], label : ["RCLC1","RCLC2", "RCLC3", "RCLC4" ], info :'CrudeOil Future Price', data_source : "NYMEX Future Price used eia API"},
 
-  NaturalGas : {url : [`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC1`, `https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC2`,`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC3`,`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC4`,`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGWHHD`],label : ["RNGC1","RNGC2", "RNGC3", "RNGC4","RNGWHHD"], info : 'NaturalGas Spot & Future Price', data_source : "NYMEX use eia API"},
+  NaturalGas : {url : [`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC1`, `https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC2`,`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC3`,`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGC4`,`https://api.eia.gov/v2/natural-gas/pri/fut/data/?api_key=${API_KEY}&frequency=daily&start=2021-01-01&sort[0][column]=period&sort[0][direction]=desc&data[]=value&facets[series][]=RNGWHHD`],label : ["RNGC1","RNGC2", "RNGC3", "RNGC4","RNGWHHD"], info : 'NaturalGas Spot & Future Price', data_source : "NYMEX used eia API"},
 
-  // Coal : ["HKEX/03948.json", "HKEX/01898.json", "HKEX/00835.json", "BSE/BOM533278.json"],
+  Coal :{url :[`https://data.nasdaq.com/api/v3/datasets/BSE/BOM533278.json?&start_date=2010-11-04&api_key=${API_KEY}`], label: [ "BSE/BOM533278"], info :'Coal Price', data_source : "Bombay Stock Exchang used Nasdaq API", path: [4] },
   
-  // Aluminium : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?api_key=${API_KEY}`, kind : ["SHFE/ALQ2022"]},
-  // Copper : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind :["HKEX/00358", "SHFE/CUQ2022"]} ,
-  // Zinc : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind :["SHFE/ZNQ2022"]},
-  // Nickel : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind :["SHFE/NIN2022"]},
-  // Lead : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind:["SHFE/PBQ2022"]},
-  // Tin : "",
-  // IronOre : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind:["HKEX/01053"]},
-  // Gold :{url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind: ["SHFE/AUX2021"]} ,
-  // Silver : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind:["SHFE/AGQ2022",	"LBMA/SILVER"]},
-  // Cobalt : {url :`https://data.nasdaq.com/api/v3/datasets/${kind}.json?&api_key=${API_KEY}`,kind :["ODA/PCOBA_USD"]},
+  Aluminium : {url :[`https://data.nasdaq.com/api/v3/datasets/SHFE/ALQ2022.json?api_key=${API_KEY}`], label : ["SHFE/ALQ2022"],info : "Aluminium Future Price",data_source : "Shanghai Futures Exchang used Nasdaq API", path: [6]},
+
+  Copper : {url :[`https://data.nasdaq.com/api/v3/datasets/SHFE/CUQ2022.json?&api_key=${API_KEY}`],label :["SHFE/CUQ2022"],  info : "Copper Future Price",data_source : "Shanghai Futures Exchang used Nasdaq API", path:[6]} ,
+
+  Zinc : {url :[`https://data.nasdaq.com/api/v3/datasets/SHFE/ZNQ2022.json?&api_key=${API_KEY}`],label :["SHFE/ZNQ2022"],info : "Zinc Future Price",data_source : "Shanghai Futures Exchang used Nasdaq API", path:[6]},
+
+  Nickel : {url :[`https://data.nasdaq.com/api/v3/datasets/SHFE/NIN2022.json?&api_key=${API_KEY}`],label :["SHFE/NIN2022"], info : "Nickel Future Price",data_source : "Shanghai Futures Exchang used Nasdaq API", path:[6]},
+
+  Lead : {url :[`https://data.nasdaq.com/api/v3/datasets/SHFE/PBQ2022.json?&api_key=${API_KEY}`],label:["SHFE/PBQ2022"], info : "Lead Future Price",data_source : "Shanghai Futures Exchang used Nasdaq API", path:[6]},
+
+  Tin : "",
+
+  IronOre : "",
+
+  Gold :{url :[`https://data.nasdaq.com/api/v3/datasets/LBMA/GOLD.json?&start_date=2000-01-01api_key=${API_KEY}`],label: ["LBMA/GOLD"], info : "Gold Fixed Price",data_source : "London Bullion Market Association used Nasdaq API", path :[1]} ,
+
+  Silver : {url :[`https://data.nasdaq.com/api/v3/datasets/LBMA/SILVER.json?&start_date=2000-01-01&api_key=${API_KEY}`,],label:["LBMA/SILVER"], info : "Silver Fixed Price",data_source : "London Bullion Market Association used Nasdaq API", path:[1]},
+
+  // Cobalt : {url :[`https://data.nasdaq.com/api/v3/datasets/ODA/PCOBA_USD.json?&api_key=${API_KEY}`],label :["ODA/PCOBA_USD"], info : "Minimum 99.80% purity Cobalt Spot Price",data_source : "IMF Cross Country Macroeconomic Statistics used Nasdaq API"},
   Lithium : "",
   
   Corn : "",
@@ -136,33 +145,34 @@ API_URL = API_Code[CommodityName.textContent][`url`];
 chart_info = API_Code[CommodityName.textContent][`info`];
 data_source = API_Code[CommodityName.textContent][`data_source`];
 let kind = API_Code[CommodityName.textContent][`label`];
+let ydataPath = API_Code[CommodityName.textContent][`path`];
+
 
 // fetch(`https://data.nasdaq.com/api/v3/datasets/${database_code}?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`)
 
 //https://internal.agtransport.usda.gov/resource/g92w-8cn7.json?$order=date%20DESC&commodity=Corn
 
-for(let i =0; i<(API_Code[CommodityName.textContent][`label`]).length;i++){
-  console.log(kind);
-  console.log(API_URL[i]);
+if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas"){
+  for(let i =0; i<(API_Code[CommodityName.textContent][`label`]).length;i++){
   fetch(API_URL[i])
   .then((response) => response.json())
   .then(
       function(data){
 
-        console.log(data);
+        // console.log(data);
           // 배열 재사용 전에 비우기
           if(ChartXvalues.length !=0)ChartXvalues = [];
           if(ChartYvalues.length !=0)ChartYvalues=[];
 
           //해당 배열에 기간과 원자재 값 넣기
-          for (let key in (data.response)[`data`]){
+          for (let key in (data.dataset)[`data`]){
             
               ChartXvalues.unshift((data.response.data)[key][`period`]);
               ChartYvalues.unshift((data.response.data)[key][`value`]);
           }
           
-          console.log(ChartXvalues);
-          console.log(ChartYvalues);
+          // console.log(ChartXvalues);
+          // console.log(ChartYvalues);
           //적당히 차트에 넣고 차트 갱신
           PriceChart.data.labels = ChartXvalues;
           PriceChart.update();
@@ -173,6 +183,34 @@ for(let i =0; i<(API_Code[CommodityName.textContent][`label`]).length;i++){
         PriceChart.options.scales.xAxes[0].scaleLabel.labelString = data_source;
 
 }
+}else {
+  for(let i =0; i<(API_Code[CommodityName.textContent][`label`]).length;i++){
+    fetch(API_URL[i])
+    .then((response) => response.json())
+    .then(
+        function(data){
+            // 배열 재사용 전에 비우기
+            if(ChartXvalues.length !=0)ChartXvalues = [];
+            if(ChartYvalues.length !=0)ChartYvalues=[];
+  
+            //해당 배열에 기간과 원자재 값 넣기
+            for (let key in data.dataset[`data`]){
+              
+                ChartXvalues.unshift((data.dataset.data)[key][0]);
+                ChartYvalues.unshift((data.dataset.data)[key][(ydataPath[i])]);
+            }
+            //적당히 차트에 넣고 차트 갱신
+            PriceChart.data.labels = ChartXvalues;
+            PriceChart.update();
+            addData(ChartYvalues,kind[i]);
+          }
+    )
+          PriceChart.options.title.text = chart_info;
+          PriceChart.options.scales.xAxes[0].scaleLabel.labelString = data_source;
+  
+  }
+}
+
 
 function getRandomColor() {
 	return "#" + Math.floor(Math.random() * 16777215).toString(16);
