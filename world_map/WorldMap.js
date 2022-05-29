@@ -16,19 +16,21 @@ dfd.readCSV(remote_url)
 
     // 브라우서 호환 ( 크로스브라우징 ) 체크 하여 문서 전체에 mousemove 이벤트를 걸어줍니다.
     if ( document.addEventListener ) {
-        document.addEventListener("mousemove",resultFun,false);
+        document.addEventListener("mousedown",resultFun,false);
     } else if ( document.attachEvent ) {
-        document.attachEvent("onmousemove",resultFun);
+        document.attachEvent("onmousedown",resultFun);
     } else {
-        document.onmousemove = resultFun;
+        document.onmousedown = resultFun;
     }
     
     //  문서에서 마우스가 움직일때(mousemove) 마다 resultFun() 함수가 실행됩니다.
     //  x.clientX,Y 는 페이지에서 이벤트 발생한 X,Y 좌표를 가져옵니다.
 
     function resultFun(event) {
+        
         var countryId = event.target.id;
         var tooltip = document.getElementById("tooltip");
+        tooltip.style.display ="block";
         switch (countryId) {
             case "AF": "Afghanistan"; 
             case "AL": "Albania"; 
@@ -55,6 +57,32 @@ dfd.readCSV(remote_url)
             case "RU":
             case "FR":
             case "US":
+            case "AS":
+            case "AB":
+            case "BAH":
+            case "COM":
+            case "CV":
+            case "CAI":
+            case "FI":
+            case "FSM":
+            case "ML":
+            case "NMI":
+            case "MAU":
+            case "NC":
+            case "PR":
+            case "FRP":
+            case "SOI":
+            case "STP":
+            case "SEY":
+            case "TCI":
+            case "TON":
+            case "TT":
+            case "USV":
+            case "VAN":
+            case "SAM":
+            case "SP":
+            case "GU":
+            case "FJ":
             case "DZ": "Algeria"; 
             case "AI": "Anguilla"; 
             case "AM": "Armenia";
@@ -227,12 +255,6 @@ dfd.readCSV(remote_url)
             return tooltip.classList.remove("active");
         }
       
-
-
-
-
-
-
         var x = event.clientX;
         var y = event.clientY;
         tooltip.style.left = (x + 20) + "px";
@@ -240,5 +262,5 @@ dfd.readCSV(remote_url)
         tooltip.innerHTML = document.getElementById(countryId).getAttribute('name');
 
         tooltip.classList.add("active");
-  
+        tooltip.classList.remove("active");
       }
