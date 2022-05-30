@@ -71,6 +71,11 @@ function addData( ChartYvalues, _label){
 }
 
 let API_KEY =  `NULL`;
+
+if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas")
+    API_KEY= `A`;
+else API_KEY = `B`;
+
 let API_URL="NULL";
 let chart_info = "NULL";
 let data_source = "NULL";
@@ -165,7 +170,7 @@ if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="Natur
           if(ChartYvalues.length !=0)ChartYvalues=[];
 
           //해당 배열에 기간과 원자재 값 넣기
-          for (let key in (data.dataset)[`data`]){
+          for (let key in (data.response)[`data`]){
             
               ChartXvalues.unshift((data.response.data)[key][`period`]);
               ChartYvalues.unshift((data.response.data)[key][`value`]);
