@@ -252,6 +252,7 @@ dfd.readCSV(remote_url)
             case "ZW": "Zimbabwe"
             break;
           default:
+            tooltip.style.display ="none";
             return tooltip.classList.remove("active");
         }
       
