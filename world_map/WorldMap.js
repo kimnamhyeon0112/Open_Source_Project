@@ -73,8 +73,8 @@ function addData( ChartYvalues, _label){
 let API_KEY =  `NULL`;
 
 if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas")
-    API_KEY= `A`;
-else API_KEY = `B`;
+    API_KEY= `a`;
+else API_KEY = `b`;
 
 let API_URL="NULL";
 let chart_info = "NULL";
@@ -222,4 +222,9 @@ function getRandomColor() {
 }
 
 
+fetch(`http://localhost/Open_Source_Project/world_map/data.php`)
+.then((response) => response.json())
+.then(function(data){
+    console.log(data);
+})
 

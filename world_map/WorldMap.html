@@ -994,7 +994,9 @@ THE SOFTWARE.
     <div class="sidebar">
         <div id="commodity_name"><h2>a</h2></div>
         <h2 class="h2data">Chart data</h2>
-        <div class="data"></div> <!--차트는 js로 만들어야 함-->
+        <div class="data">
+            <canvas id="WorldMap_Value"></canvas>
+        </div> <!--차트는 js로 만들어야 함-->
         <h2 class="h2pricechart">Price</h2> 
         <div class="market_price">
             <canvas id="Price_LineChart"></canvas>
@@ -1004,11 +1006,11 @@ THE SOFTWARE.
     </div>
     <div class="footer">
         <span class="functions">
-            <button class="Importers" type="button" >수입국가</button>
-            <button class="Importers" type="button" >생산국가</button>
+            <button class="Import" type="button" >수입국가</button>
+            <button class="Product" type="button" >생산국가</button>
             <button class="Stock" type="button" >재고량</button>
-            <button class="Exporters" type="button" >수출국가</button>
-            <button class="Importers" type="button" >소비국가</button>
+            <button class="Export" type="button" >수출국가</button>
+            <button class="Consume" type="button" >소비국가</button>
             <button class="Reserves" type="button" >매장량</button>
         </span>
         <span class="resetWrapper"><button class="reset" type="button" onclick="location.href='.././index.html';">재검색</button></span>
