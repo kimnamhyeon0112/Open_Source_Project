@@ -16,6 +16,7 @@ svg path
     cursor: pointer;
     transition: 0.6s;
     fill:#5ca4ea;
+    
 }
 
 .container {
@@ -138,5 +139,18 @@ button:active {
      stroke-width: 1; 
  }
   */
-
- 
+  .tooltiptext {
+    display:none;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: fixed;
+    z-index: 1;
+    opacity: 1;
+  }
+  
+  .tooltiptext.active {
+    display: initial;
+  }
