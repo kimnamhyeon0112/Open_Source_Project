@@ -21,7 +21,7 @@ svg path
 
 .container {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 70% 30%;
     grid-template-rows: 10% 1fr 5%;
     height: 100vh;
     grid-template-areas: 
@@ -61,16 +61,37 @@ svg path
     grid-area: sidebar;
     border-left: solid 3px black;
     display: grid;
-    grid-template-rows: 5% 40% 25% 20% 10% ;
+    grid-template-rows: 5% 4% 1fr 4% 1fr ;
+    grid-template-areas:
+    "commodity_name"
+    "h2data"
+    "data"
+    "h2pricechart"
+    "market_chart";
     padding-left: 5px;
 }
 #commodity_name {
+    grid-area: commodity_name;
     display: grid;
     align-items: center;
     border-bottom: solid 1px black;
     font-weight: bold;
 }
-
+.h2data{
+    grid-area: h2data;
+}
+.data{
+    grid-area: data;
+}
+.h2pricechart{
+    grid-area: h2pricechart;
+}
+.market_price{
+   grid-area: market_chart;
+    position: relative;
+    height: 45vh;
+    width: 29vw;
+}
 
 .footer {
     grid-area: footer;
