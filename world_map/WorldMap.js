@@ -33,8 +33,7 @@ let chartsheet = {
       }
     },
     scales:{
-      xAxes:[
-        {
+      xAxes: {
           scaleLabel: {
             display: true,
             labelString: 'NULL',
@@ -47,7 +46,7 @@ let chartsheet = {
             autoSkipPadding: 8,
           } 
        }
-      ]
+      
     }
 }
 }
@@ -183,7 +182,7 @@ if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="Natur
         }
   )
         PriceChart.options.title.text = chart_info;
-        PriceChart.options.scales.xAxes[0].scaleLabel.labelString = data_source;
+        PriceChart.options.scales.xAxes.scaleLabel.labelString = data_source;
 
 }
 }else {
@@ -238,22 +237,24 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
 
 
   let config = {
-    type: 'pie',
+    type: 'doughnut',
     options: {
       responsive: true,
       plugins: {
         legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Chart.js Pie Chart'
+          position: "right",
+          align: "middle",
+          fontFamily : "Open Sans, sans-serif",
+          labels :{
+            boxWidth : 10,      //이름박스 크기 조절
+            usePointStyle: true,
+          },
         }
       }
     },
     data : {
-      labels : chart_country,
-      datasets :[{
+     labels : chart_country,
+     datasets :[{
         data : chart_value,
         backgroundColor: colors,
       }]

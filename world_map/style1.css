@@ -82,6 +82,9 @@ svg path
 }
 .data{
     grid-area: data;
+    position: relative;
+    height: 45vh;
+    width: 29vw;
 }
 .h2pricechart{
     grid-area: h2pricechart;
