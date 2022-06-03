@@ -70,8 +70,8 @@ function addData( ChartYvalues, _label){
 let API_KEY =  `NULL`;
 
 if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas")
-    API_KEY= `a`;
-else API_KEY = `b`;
+    API_KEY= ``;
+else API_KEY = ``;
 
 let API_URL="NULL";
 let chart_info = "NULL";
@@ -226,14 +226,38 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
   let chart_value=[];
   let chart_country=[];
   let colors=[];
+  let char3=[];
+  let char2=[];
+  let _unit='';
 
   for(let i = 0; i < data.length; i++){
     if(data[i][`commodity`]==CommodityName.textContent){
-      chart_value.push(data[i][`value`]);
+      chart_value.push(Number(data[i][`value`]));
       chart_country.push(data[i][`name`]);
       colors.push(getRandomColor());
+      char2.push((data[i][`alpha_2`]).toUpperCase());
+      char3.push((data[i][`alpha_3`]).toUpperCase());
+      _unit = data[i][`unit`];
     }
   }
+  const sum = chart_value.reduce((a,b) => (a+b));
+
+  const counter = {
+    id: 'counter',
+    beforeDraw(chart, args, options) {
+      const { ctx, chartArea: { top, right , bottom, left, width, height } } = chart;
+      ctx.save();
+      ctx.fillStyle = 'black';
+      ctx.fillRect(width / 2, top + (height / 2), 0, 0);
+      ctx.font = '3vmin Open Sans, sans-serif';
+      ctx.textAlign = 'center';
+      // console.log("width", width);
+      // console.log("height", height);
+      // console.log("top", top);
+      // console.log("width / 2, top + (height / 2)", width / 2, top + (height / 2));
+      ctx.fillText(`Total: ${sum}`, width / 2, (height / 2));
+    }
+  };
 
 
   let config = {
@@ -250,21 +274,32 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
             boxWidth : 10,      //이름박스 크기 조절
             usePointStyle: true,
           },
+        },
+        title:{
+          display:true,
+          text : `Unit: ${_unit}`,
+          position : 'bottom'
         }
-      }
+      },
     },
+    plugins:[counter],
     data : {
      labels : chart_country,
      datasets :[{
         data : chart_value,
         backgroundColor: colors,
       }]
-    }
+    },
+   
   };
 
-
-
   new Chart(document.getElementById("WorldMap_Value"), config);
+
+
+
+
+
+
 })
 
 function reload(kind){
@@ -272,7 +307,15 @@ function reload(kind){
   window.location.href="./WorldMap.html";
 }
 
-
+function fillArea(char2, char3){
+  for(let i = 0; i<char2.length;i++){
+    let targetArea = document.getElementById(char2[i]);
+    targetArea.style.fill = "red";
+    // targetArea = document.getElementById(char3[i]);
+    // targetArea.style.fill = "#c2c460";
+  }
+  
+}
 
 
 
@@ -303,7 +346,7 @@ function reload(kind){
             case "CA":
             case "CN":
             case "DM":
-            case "UK":
+            case "GB":
             case "GR":
             case "ID":
             case "IT":

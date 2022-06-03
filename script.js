@@ -46,7 +46,7 @@ searchbox.addEventListener("keypress", function(event) {
 				if(textvalue.toUpperCase()==searchbox.value.toUpperCase()){
 					localStorage.setItem("inputValue", textvalue);
 					window.location.href="./world_map/WorldMap.html";
-					check=false;
+					check=false;	
 					break;
 				}
 			}	
