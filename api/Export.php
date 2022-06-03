@@ -12,7 +12,7 @@ if(!$mysqli){
     die("Connection failed: ". $mysqli->error);
 }
 
-$query = sprintf("SELECT * FROM `export` INNER JOIN `world` ON export.world_key = world.id JOIN `commodity` ON export.commodity_key = commodity.commodity;");
+$query = sprintf("SELECT * FROM `export` INNER JOIN `world` ON export.world_id = world.id JOIN `commodity` ON export.commodity = commodity.commodity;");
 
 $result = $mysqli->query($query);
 

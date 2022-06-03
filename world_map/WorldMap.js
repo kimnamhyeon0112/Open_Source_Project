@@ -208,7 +208,7 @@ if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="Natur
           }
     )
           PriceChart.options.title.text = chart_info;
-          PriceChart.options.scales.xAxes[0].scaleLabel.labelString = data_source;
+          PriceChart.options.scales.xAxes.scaleLabel.labelString = data_source;
   
   }
 }
@@ -239,6 +239,7 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
   let config = {
     type: 'doughnut',
     options: {
+      aspectRatio : 1.5,
       responsive: true,
       plugins: {
         legend: {
@@ -266,7 +267,10 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
   new Chart(document.getElementById("WorldMap_Value"), config);
 })
 
-
+function reload(kind){
+  localStorage.setItem("inputValue", CommodityName.textContent+" "+kind);
+  window.location.href="./WorldMap.html";
+}
 
 
 
