@@ -223,7 +223,46 @@ function getRandomColor() {
 fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
 .then((response) => response.json())
 .then(function(data){
-    console.log(data);
+  console.log(data);
+  let chart_value=[];
+  let chart_country=[];
+  let colors=[];
+
+  for(let i = 0; i < data.length; i++){
+    if(data[i][`commodity`]==CommodityName.textContent){
+      chart_value.push(data[i][`value`]);
+      chart_country.push(data[i][`name`]);
+      colors.push(getRandomColor());
+    }
+  }
+
+
+  let config = {
+    type: 'pie',
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Pie Chart'
+        }
+      }
+    },
+    data : {
+      labels : chart_country,
+      datasets :[{
+        data : chart_value,
+        backgroundColor: colors,
+      }]
+    }
+  };
+
+
+
+  new Chart(document.getElementById("WorldMap_Value"), config);
 })
 
 
