@@ -222,7 +222,7 @@ function getRandomColor() {
 }
 
 
-fetch(`http://localhost/Open_Source_Project/world_map/data.php`)
+fetch(`http://localhost/Open_Source_Project/api/Import.php`)
 .then((response) => response.json())
 .then(function(data){
     console.log(data);
@@ -233,12 +233,6 @@ fetch(`http://localhost/Open_Source_Project/world_map/data.php`)
 
 
 
-const textvalue = localStorage.getItem('inputValue')
-let h1TagContent = document.getElementById("Header")    
-let CommodityName = document.getElementById("commodity_name");
-
-h1TagContent.textContent = textvalue
-CommodityName.textContent = textvalue.substring(0,(textvalue.indexOf(' ')));
 
     // 브라우서 호환 ( 크로스브라우징 ) 체크 하여 문서 전체에 mousemove 이벤트를 걸어줍니다.
     if ( document.addEventListener ) {
