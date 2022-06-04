@@ -217,12 +217,14 @@ if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="Natur
 function getRandomColor() {
 	return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
-
+function roundToTwo(num) {
+  return +(Math.round(num + "e+2")  + "e-2");
+}
 
 fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
 .then((response) => response.json())
 .then(function(data){
-  console.log(data);
+  // console.log(data);
   let chart_value=[];
   let chart_country=[];
   let colors=[];
@@ -240,22 +242,35 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
       _unit = data[i][`unit`];
     }
   }
-  const sum = chart_value.reduce((a,b) => (a+b));
+  let sum = chart_value.reduce((a,b) => (a+b));
 
-  const counter = {
+console.log(char2);
+console.log(char3);
+console.log(chart_country);
+fillArea(char2, char3, chart_country, colors);
+
+const counter = {
     id: 'counter',
     beforeDraw(chart, args, options) {
       const { ctx, chartArea: { top, right , bottom, left, width, height } } = chart;
       ctx.save();
       ctx.fillStyle = 'black';
       ctx.fillRect(width / 2, top + (height / 2), 0, 0);
-      ctx.font = '3vmin Open Sans, sans-serif';
+      ctx.font = '25px Open Sans, sans-serif';
       ctx.textAlign = 'center';
       // console.log("width", width);
       // console.log("height", height);
       // console.log("top", top);
       // console.log("width / 2, top + (height / 2)", width / 2, top + (height / 2));
-      ctx.fillText(`Total: ${sum}`, width / 2, (height / 2));
+      ctx.fillText("Total", width / 2, (height / 7)*3);
+
+      ctx.restore();
+
+      ctx.font = '20px Open Sans, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'black';
+      ctx.fillText(sum, width / 2, (height / 7)*4);
+
     }
   };
 
@@ -288,18 +303,13 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
      datasets :[{
         data : chart_value,
         backgroundColor: colors,
+        cutout:"60%",
       }]
     },
    
   };
-
+  console.log(11);
   new Chart(document.getElementById("WorldMap_Value"), config);
-
-
-
-
-
-
 })
 
 function reload(kind){
@@ -307,14 +317,29 @@ function reload(kind){
   window.location.href="./WorldMap.html";
 }
 
-function fillArea(char2, char3){
+function fillArea(char2, char3, _name, _colors){
   for(let i = 0; i<char2.length;i++){
     let targetArea = document.getElementById(char2[i]);
-    targetArea.style.fill = "red";
-    // targetArea = document.getElementById(char3[i]);
-    // targetArea.style.fill = "#c2c460";
-  }
-  
+    if(targetArea != null){
+      targetArea.style.fill = _colors[i];
+      targetArea.style.stroke = "#eeee";
+      targetArea.style.strokeWidth = 1.5;
+    }
+    let targetArea2= document.getElementById(char3[i]);
+    if(targetArea2 !=null){
+      targetArea2.style.fill = _colors[i];
+      targetArea2.style.stroke = "#eeee";
+      targetArea2.style.strokeWidth = 1.5;
+    }  
+    let targetArea3 = document.getElementsByName(_name[i]);
+    if(targetArea3 !=null){
+      for(let j = 0; j< targetArea3.length;j++){
+        targetArea3[j].style.fill = _colors[i];
+        targetArea3[j].style.stroke = "#eeee";
+        targetArea3[j].style.strokeWidth = 1.5;
+      }
+    }
+  }  
 }
 
 
