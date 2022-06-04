@@ -6,13 +6,21 @@
  물류(에너지 가격에 영향을 받는 분야)에 의존성이 크거나 더 나아가 국가가 특정 국가에 원자재 의존도가 높은 경우,
  상황이 나빠지면 국가 단위로 안 좋아질 가능성이 높기에 투자의 어려움을 겪을 수 있어 이를 방지하기 위함이다.
 # 설치 방법
-본 프로젝트를 clone받는다.
+     1. apache, mysql, php를 설치한다.
+          WAMP을 통해 설치하는 것을 추천
+     2. /apache24/htdocs 에 해당 repo를 clone 받는다.
+
 # 의존성(버전)
-     HTML5 (HTML)
-     CSS3  (CSS)
-     ES8   (Javascript)    
+     Apache (2.4.53)
+     mysql  (8.0.29)
+     PHP    (8.1.6)
 # 사용 방법
-구현중, 차후 공개
+     1. 내부 LAN이 같은 경우에서...
+          해당 컴퓨터의 ip 주소를 WorldMap.js의 id_address 변수에 넣어준다.
+     2. eia, Nasdaq에서 open api key를 회원가입하고 구해서 WorldMap.js의 73번째 줄_if문장에 eia api key, else 문장에 nasdaq api key를 순서대로 넣어준다.
+     3.해당 repo에 포함된 DB folder에 있는 oss.sql 파일을 mysql DB에 import한다.
+     4. api folder에 있는 *.php 파일의 define부분을 수정한다.
+     
 # 라이선스
 MIT License
 # 연락처
