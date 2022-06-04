@@ -1,3 +1,4 @@
+
 const textvalue = localStorage.getItem('inputValue')
 let h1TagContent = document.getElementById("Header")    
 let CommodityName = document.getElementById("commodity_name");
@@ -215,7 +216,12 @@ if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="Natur
 
 
 function getRandomColor() {
-	return "#" + Math.floor(Math.random() * 16777215).toString(16);
+	// return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  let r = Math.floor(Math.random() * 255);
+  let g = Math.floor(Math.random() * 255);
+  let b = Math.floor(Math.random() * 255);
+  let col = "rgba(" + r + "," + g + "," + b +","+"0.3"+ ")";
+  return col;
 }
 function roundToTwo(num) {
   return +(Math.round(num + "e+2")  + "e-2");
@@ -243,8 +249,9 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
     }
   }
   let sum = chart_value.reduce((a,b) => (a+b));
+  sum = roundToTwo(sum);
 
-console.log(char2);
+console.log(chart_value);
 console.log(char3);
 console.log(chart_country);
 fillArea(char2, char3, chart_country, colors);
@@ -274,13 +281,22 @@ const counter = {
     }
   };
 
-
   let config = {
     type: 'doughnut',
     options: {
       aspectRatio : 1.5,
       responsive: true,
       plugins: {
+        labels:{
+          render : 'percentage',
+          percision : 2,
+          fontColor : "#161b22",
+          fontFamily: "'Open Sans', sans-serif",
+          fontSize: 12,
+          // textShadow: true,
+          fontStyle: 'bold',
+          // shadowColor: 'rgba(239, 239, 239,1)',
+        },
         legend: {
           position: "right",
           align: "middle",
@@ -293,10 +309,13 @@ const counter = {
         title:{
           display:true,
           text : `Unit: ${_unit}`,
-          position : 'bottom'
-        }
+          position : 'bottom',
+          align : 'start',
+          padding : '10 0 0 30',          
+        },
       },
     },
+   
     plugins:[counter],
     data : {
      labels : chart_country,
@@ -308,7 +327,6 @@ const counter = {
     },
    
   };
-  console.log(11);
   new Chart(document.getElementById("WorldMap_Value"), config);
 })
 
@@ -322,21 +340,21 @@ function fillArea(char2, char3, _name, _colors){
     let targetArea = document.getElementById(char2[i]);
     if(targetArea != null){
       targetArea.style.fill = _colors[i];
-      targetArea.style.stroke = "#eeee";
-      targetArea.style.strokeWidth = 1.5;
+      targetArea.style.stroke = "#ffff";
+      targetArea.style.strokeWidth = 2;
     }
     let targetArea2= document.getElementById(char3[i]);
     if(targetArea2 !=null){
       targetArea2.style.fill = _colors[i];
-      targetArea2.style.stroke = "#eeee";
-      targetArea2.style.strokeWidth = 1.5;
+      targetArea2.style.stroke = "#ffff";
+      targetArea2.style.strokeWidth = 2;
     }  
     let targetArea3 = document.getElementsByName(_name[i]);
     if(targetArea3 !=null){
       for(let j = 0; j< targetArea3.length;j++){
         targetArea3[j].style.fill = _colors[i];
-        targetArea3[j].style.stroke = "#eeee";
-        targetArea3[j].style.strokeWidth = 1.5;
+        targetArea3[j].style.stroke = "#ffff";
+        targetArea3[j].style.strokeWidth = 2;
       }
     }
   }  
