@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 define('DB_HOST', 'localhost');
-define('DB_USERNAME', 'root');
+define('DB_USERNAME', 'oss_yongin');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'oss');
 

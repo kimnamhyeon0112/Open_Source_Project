@@ -70,8 +70,7 @@ function addData( ChartYvalues, _label){
 
 let API_KEY =  `NULL`;
 
-if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas")
-    API_KEY= ``;
+if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas")API_KEY= ``;
 else API_KEY = ``;
 
 let API_URL="NULL";
@@ -151,8 +150,6 @@ let kind = API_Code[CommodityName.textContent][`label`];
 let ydataPath = API_Code[CommodityName.textContent][`path`];
 
 
-// fetch(`https://data.nasdaq.com/api/v3/datasets/${database_code}?start_date=${start_date}&end_date=${end_date}&api_key=${API_KEY}`)
-
 //https://internal.agtransport.usda.gov/resource/g92w-8cn7.json?$order=date%20DESC&commodity=Corn
 
 if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas"){
@@ -220,14 +217,15 @@ function getRandomColor() {
   let r = Math.floor(Math.random() * 255);
   let g = Math.floor(Math.random() * 255);
   let b = Math.floor(Math.random() * 255);
-  let col = "rgba(" + r + "," + g + "," + b +","+"0.3"+ ")";
+  let col = "rgba(" + r + "," + g + "," + b +","+"0.4"+ ")";
   return col;
 }
 function roundToTwo(num) {
   return +(Math.round(num + "e+2")  + "e-2");
 }
 
-fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
+let ip_address = '';
+fetch(`http://${ip_address}/Open_Source_Project/api/${types}.php`)
 .then((response) => response.json())
 .then(function(data){
   // console.log(data);
@@ -237,6 +235,7 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
   let char3=[];
   let char2=[];
   let _unit='';
+  let _source='';
 
   for(let i = 0; i < data.length; i++){
     if(data[i][`commodity`]==CommodityName.textContent){
@@ -246,14 +245,15 @@ fetch(`http://localhost/Open_Source_Project/api/${types}.php`)
       char2.push((data[i][`alpha_2`]).toUpperCase());
       char3.push((data[i][`alpha_3`]).toUpperCase());
       _unit = data[i][`unit`];
+      _source = data[i][`source`];
     }
   }
   let sum = chart_value.reduce((a,b) => (a+b));
   sum = roundToTwo(sum);
 
-console.log(chart_value);
-console.log(char3);
-console.log(chart_country);
+// console.log(chart_value);
+// console.log(char3);
+// console.log(chart_country);
 fillArea(char2, char3, chart_country, colors);
 
 const counter = {
@@ -308,7 +308,7 @@ const counter = {
         },
         title:{
           display:true,
-          text : `Unit: ${_unit}`,
+          text : `Unit: ${_unit}, Source: ${_source}`,
           position : 'bottom',
           align : 'start',
           padding : '10 0 0 30',          
