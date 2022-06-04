@@ -71,6 +71,8 @@ function addData( ChartYvalues, _label){
 let API_KEY =  `NULL`;
 
 if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="NaturalGas")API_KEY= ``;
+else if(CommodityName.textContent == "Corn" || CommodityName.textContent == "Wheat" || CommodityName.textContent == "Rice" || CommodityName.textContent == "Oats" || CommodityName.textContent == "SoybeansOil" || CommodityName.textContent == "Soybeans" || CommodityName.textContent == "Milk" || CommodityName.textContent == "Sugar" || CommodityName.textContent == "Coffee" || CommodityName.textContent == "Tin" || CommodityName.textContent == "IronOre") API_KEY = ``;
+
 else API_KEY = ``;
 
 let API_URL="NULL";
@@ -98,9 +100,9 @@ let API_Code = {
 
   Lead : {url :[`https://data.nasdaq.com/api/v3/datasets/SHFE/PBQ2022.json?&api_key=${API_KEY}`],label:["SHFE/PBQ2022"], info : "Lead Future Price",data_source : "Shanghai Futures Exchang used Nasdaq API", path:[6]},
 
-  Tin : "",
+  Tin : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PTINUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PTINUSDM"], info : "tin Fixed Price"},
 
-  IronOre : "",
+  IronOre : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PIORECRUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PIORECRUSDM"], info : "iron ore Fixed Price"},
 
   Gold :{url :[`https://data.nasdaq.com/api/v3/datasets/LBMA/GOLD.json?&start_date=2000-01-01api_key=${API_KEY}`],label: ["LBMA/GOLD"], info : "Gold Fixed Price",data_source : "London Bullion Market Association used Nasdaq API", path :[1]} ,
 
@@ -109,14 +111,15 @@ let API_Code = {
   // Cobalt : {url :[`https://data.nasdaq.com/api/v3/datasets/ODA/PCOBA_USD.json?&api_key=${API_KEY}`],label :["ODA/PCOBA_USD"], info : "Minimum 99.80% purity Cobalt Spot Price",data_source : "IMF Cross Country Macroeconomic Statistics used Nasdaq API"},
   Lithium : "",
   
-  Corn : "",
-  Wheat : "",
-  Rice : "",
-  Oats : "",
-  SoybeanOil : "",
-  Soybean : "",
-  Sugar : "",
-  Coffee : ""
+  Corn : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PMAIZMTUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PMAIZMTUSDM"], info : "corn Fixed Price"},
+  Wheat : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PWHEAMTUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PWHEAMTUSDM"], info : "wheat Fixed Price"},
+  Rice : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PRICENPQUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PRICENPQUSDM"], info : "rice Fixed Price"},
+  Oats : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=WPU012203&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["WPU012203"], info : "oats Fixed Price"},
+  SoybeanOil : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PSOILUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PSOILUSDM"], info : "soybeans oil Fixed Price"},
+  Soybean : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PSOYBUSDQ&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PSOYBUSDQ"], info : "soybeans Fixed Price"},
+  Milk : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=WPU01610102&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["WPU01610102"], info : "milk Fixed Price"},
+  Sugar : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PSUGAISAUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PSUGAISAUSDM"], info : "suger Fixed Price"},
+  Coffee : {url :[`https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred/series/observations?series_id=PCOFFOTMUSDM&api_key=${API_KEY}&file_type=json&observation_start=1990-01-01`],label:["PCOFFOTMUSDM"], info : "coffee Fixed Price"}
 }
 
 function getToday(){
@@ -173,6 +176,36 @@ if(CommodityName.textContent == "CrudeOil" || CommodityName.textContent =="Natur
           
           // console.log(ChartXvalues);
           // console.log(ChartYvalues);
+          //적당히 차트에 넣고 차트 갱신
+          PriceChart.data.labels = ChartXvalues;
+          PriceChart.update();
+          addData(ChartYvalues,kind[i]);
+        }
+  )
+        PriceChart.options.title.text = chart_info;
+        PriceChart.options.scales.xAxes.scaleLabel.labelString = data_source;
+
+}
+}else if(CommodityName.textContent == "Corn" || CommodityName.textContent == "Wheat" || CommodityName.textContent == "Rice" || CommodityName.textContent == "Oats" || CommodityName.textContent == "SoybeansOil" || CommodityName.textContent == "Soybeans" || CommodityName.textContent == "Milk" || CommodityName.textContent == "Sugar" || CommodityName.textContent == "Coffee" || CommodityName.textContent == "Tin" || CommodityName.textContent == "IronOre"){
+  for(let i =0; i<(API_Code[CommodityName.textContent][`label`]).length;i++){
+  fetch(API_URL[i])
+  .then((response) => response.json())
+  .then(
+      function(data){
+
+          //console.log(data);
+          // 배열 재사용 전에 비우기
+          if(ChartXvalues.length !=0)ChartXvalues = [];
+          if(ChartYvalues.length !=0)ChartYvalues=[];
+
+          //해당 배열에 기간과 원자재 값 넣기
+          for (let key in data[`observations`]){
+              
+              ChartXvalues.push((data.observations)[key][`date`]);
+              ChartYvalues.push((data.observations)[key][`value`]);
+          }
+          console.log(ChartXvalues);
+          console.log(ChartYvalues);
           //적당히 차트에 넣고 차트 갱신
           PriceChart.data.labels = ChartXvalues;
           PriceChart.update();
