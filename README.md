@@ -17,9 +17,12 @@
 # 사용 방법
      1. 내부 LAN이 같은 경우에서...
           해당 컴퓨터의 ip 주소를 WorldMap.js의 id_address 변수에 넣어준다.
-     2. eia, Nasdaq에서 open api key를 회원가입하고 구해서 WorldMap.js의 73번째 줄_if문장에 eia api key, else 문장에 nasdaq api key를 순서대로 넣어준다.
+     2. eia, fred.stlouisfed.org, Nasdaq에서 open api key를 회원가입하고 구해서 WorldMap.js의 73번째 줄_if문장에 eia api key, else 문장에 api key를 순서대로 넣어준다.
      3.해당 repo에 포함된 DB folder에 있는 oss.sql 파일을 mysql DB에 import한다.
      4. api folder에 있는 *.php 파일의 define부분을 수정한다.
+     5. https://cors-anywhere.herokuapp.com/ 사이트에 접속하여 잠금 해제를 하고 사이트를 이용한다.
+        (open api를 가져오는 과정에서 cors 문제가 발생하여 간단한 방법으로 Proxy 기능을 사용할 수 있는 웹팩을 사용하였다.)
+
      
 # 라이선스
 MIT License
